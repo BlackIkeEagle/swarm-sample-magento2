@@ -10,6 +10,7 @@ version=$1
 rm -rf pub/static/* generated/* var/*
 composer install --no-dev
 php bin/magento setup:static-content:deploy -f en_US
+php bin/magento setup:static-content:deploy -f nl_BE
 php bin/magento setup:di:compile
 composer dump-autoload -o
 
