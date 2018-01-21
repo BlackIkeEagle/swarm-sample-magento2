@@ -1,0 +1,7 @@
+FROM dockerwest/php-magento2:7.1
+
+COPY ./ /phpapp/
+RUN rm -rf /phpapp/var/* && rm -rf /phpapp/pub/media/* \
+    && rm -rf /phpapp/update && rm -rf /phpapp/phpserver && rm -rf /phpapp/dev \
+    && rm -f /phpapp/app/etc/env.php \
+    && chown -R www-data:www-data /phpapp

@@ -1,0 +1,4 @@
+FROM dockerwest/nginx-magento2:mainline
+
+COPY ./pub /phpapp/pub
+RUN rm -rf /phpapp/pub/media/* && chown -R nginx:nginx /phpapp/pub
