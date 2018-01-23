@@ -1,7 +1,12 @@
 FROM dockerwest/php-magento2:7.1
 
+COPY ./entrypoint.sh /
+COPY ./go-cron /usr/local/bin
 COPY ./ /phpapp/
 RUN rm -rf /phpapp/var/* && rm -rf /phpapp/pub/media/* \
     && rm -rf /phpapp/update && rm -rf /phpapp/phpserver && rm -rf /phpapp/dev \
     && rm -f /phpapp/app/etc/env.php \
     && chown -R www-data:www-data /phpapp
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["php-fpm7.1"]
