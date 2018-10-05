@@ -14,6 +14,8 @@ php bin/magento setup:static-content:deploy -f nl_BE
 php bin/magento setup:di:compile
 composer dump-autoload -o
 
+echo "$version" > var/.version
+
 docker build --squash=true -f Dockerfile-nginx -t blackikeeagle/swarm-magento2-demo-nginx:$version .
 docker build --squash=true -f Dockerfile-php -t blackikeeagle/swarm-magento2-demo-php:$version .
 

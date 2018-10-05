@@ -1,6 +1,7 @@
 FROM dockerwest/php-magento2:7.1
 
 COPY ./entrypoint.sh /
+COPY ./prepare-command.sh /
 COPY ./go-cron /usr/local/bin
 COPY ./ /phpapp/
 RUN rm -rf /phpapp/var/* && rm -rf /phpapp/pub/media/* \
